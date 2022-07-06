@@ -1,0 +1,46 @@
+# The final 
+# Ahmaide Al-Awawdah - 1190823
+m=0
+read -p "Enter the number: " num
+re='^[0-9]+$'
+while [ $m -eq 0 ]
+do
+	if ! [[ $num =~ $re ]]
+	then
+		printf "The number you entered isn't valid"
+		read -p "Please try again: : " num
+	else
+		m=1
+		sum=0
+		size=$( echo -n $num | wc -c)
+		i=0
+		while [ $i -lt $size ]
+		do
+			digit=${num:$i:1}
+			cube=$(( $digit * $digit * $digit ))
+			sum=$(( $sum + $cube ))
+			printf "The digit "
+			printf $i 
+			printf " is: " 
+			printf $digit
+			printf ", The cube is: "
+			printf $cube
+			printf ", The current sum is: "
+			printf $sum
+			printf "\n"
+			i=$(( $i + 1 ))
+		done
+		printf "\n"
+		printf "The final sum is: "
+		printf $sum
+		printf "\n"
+		printf "Does the number equal the cube?: " 
+		if [ $sum -eq $num ]
+		then 
+			printf "True"
+		else
+			printf "False"
+		fi
+		printf "\n"
+	fi
+done
